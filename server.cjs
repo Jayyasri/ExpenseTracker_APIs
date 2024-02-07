@@ -15,9 +15,12 @@ connectToDb(function(error) {
         console.log('Could not establish connection...') 
         console.log(error) //To know what is the error
     } else {
-        app.listen(8000)
+        // process.env.PORT : cloud service
+        // 8000 : local machine
+        const port = process.env.PORT || 8000
+        app.listen(port)
         db = getDb()  // connection is saved to a variable db, so that we can fetch the data and we can insert, delete etc (crud operations)
-        console.log('Listening on port 8000...')
+        console.log(`Listening on port ${port}...`)
     }
 })
 
