@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
 const {ObjectId} = require('mongodb') //adding the ObjectId package in the mongodb package for the deleting the entry using query
 
@@ -8,6 +9,7 @@ const {connectToDb, getDb} = require('./dbConnection.cjs') //{connectToDb, getDb
 
 const app = express()
 app.use(bodyParser.json())
+app.use(cors())
 
 let db
 connectToDb(function(error) { 
